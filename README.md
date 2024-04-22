@@ -22,6 +22,6 @@ Primeiramente um usuário se auto cadastra (com nome, e-mail e senha), após cad
 - Deve ter o node na versão 18.15.0 ou superior
 - Necessário executar o [back-end do progeto](https://github.com/mauriliox21/cryptoalert), para poder executar as operações corretamente.
 - Executar os seguintes comandos:
-    - npm install
-    - npx expo start
-Em caso de ser executado usando o expo não é possível testar o recebimento de notificações, caso queira um teste completo use o comando ```npx expo run:android``` no lugar do comando ```npx expo start```, Este comando irá gerar uma compilação local com os recursos nativos.
+    - ```npm install```
+    - ```npx expo start```
+- Em caso de ser executado usando o comando ```npx expo start``` não é possível testar o recebimento de notificações, caso queira um teste completo use o comando ```npx expo run:android```, este comando irá gerar uma compilação local com os recursos nativos.
