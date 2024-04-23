@@ -14,17 +14,20 @@ import { AxiosInstance } from "../config/AxiosInstace";
 import { AxiosError, AxiosResponse } from "axios";
 import Alert from "../components/Alert";
 import Toast from "../components/Toast";
+import Switch from "../components/Switch";
 
 type IFormData = {
     cryptocurrency: string;
     alertType: string;
     targetValue: number;
+    isActive: boolean;
 } 
 
 const createAlertSchema = yup.object({
     cryptocurrency: yup.string().required("Informe a criptomoeda"),
     alertType: yup.string().required("Informe o tipo do alerta"),
-    targetValue: yup.number().required("Informe o valor alvo").typeError("Informe o valor alvo").min(0.000001, "O valor minimo é 0,000001")
+    targetValue: yup.number().required("Informe o valor alvo").typeError("Informe o valor alvo").min(0.000001, "O valor minimo é 0,000001"),
+    isActive: yup.boolean().required()
 });
 
 const handleChangeTargetValue = (value: string, onChange: Function) => {
@@ -92,6 +95,7 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
             setValue('alertType', res.data.tpAlert);
             setValue('cryptocurrency', res.data.cryptocurrency.id.toString());
             setValue('targetValue', res.data.nrTargetValue);
+            setValue('isActive', res.data.isActive);
             
         })
         .catch((error: AxiosError<DefaultErrorResponse>) => {
@@ -112,7 +116,8 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
         AxiosInstance.patch(`/alerts/${route.params?.idAlert}`, {
             nrTargetValue: alert.targetValue,
             idCryptocurrency: alert.cryptocurrency,
-            tpAlert: alert.alertType
+            tpAlert: alert.alertType,
+            isActive: alert.isActive
         })
         .then(() => {
             closePage(true, "Alerta  alterado com sucesso!");
@@ -171,6 +176,7 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
             </HStack>
 
             <VStack p={5} flex={9} space={2}>
+                
                 <Controller 
                     control={control} 
                     name="cryptocurrency"
@@ -219,6 +225,22 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
                         />
                     )}
                 />
+                
+                {
+                    isUpdate
+                    &&
+                    (<Controller 
+                        control={control} 
+                        name="isActive"
+                        render={({field: { onChange, value }}) => (
+                            <Switch
+                                title="Ativo:"
+                                onValueChange={onChange} 
+                                value={value}
+                            />
+                        )}
+                    />)
+                }
 
                 <VStack px={10} mt={10}>
                     <Button title={isUpdate ? "Alterar" : "Criar"} onPress={handleSubmit(handleAction)} isLoading={isLoading}/>

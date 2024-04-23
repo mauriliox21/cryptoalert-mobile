@@ -3,6 +3,7 @@ export type AlertResponse = {
     id: number;
     tpAlert: "TO_UP"|"TO_DOWN";
     nrTargetValue: number;
+    isActive: boolean;
     cryptocurrency: CryptocurrencyResponse;
 }
 
