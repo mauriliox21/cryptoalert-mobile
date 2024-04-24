@@ -154,6 +154,13 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
         })
     }
 
+    const maskValue = (value: string) => {
+        value = value.replace(/\D/g, ""); // Remove todos os não dígitos
+        value = value.replace(/(\d+)(\d{2})$/, "$1,$2"); // Adiciona a parte de centavos
+        value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."); // Adiciona pontos a cada três dígitos
+        return value;
+    }
+
     useEffect(() => {
         getAllCryptocurrencies();
         if(route.params){
@@ -219,9 +226,9 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
                             title="Valor alvo:"
                             placeholder="0,00" 
                             keyboardType="decimal-pad"
-                            onChangeText={(fildValue) => onChange(fildValue.replace(",", "."))} 
+                            onChangeText={(fildValue) => onChange(fildValue.replace(/\D/g, "").replace(/(\d+)(\d{2})$/, "$1.$2"))} 
                             errorMessage={errors.targetValue?.message} 
-                            value={value ? value.toLocaleString("pt-BR", {minimumFractionDigits: 2}).replace(".", ",") : undefined}
+                            value={value ? maskValue(value.toString()) : undefined}
                         />
                     )}
                 />

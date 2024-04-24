@@ -26,7 +26,7 @@ export default function CardAlert({alert, onPress, onPressDelete}: CardAlertProp
                 <VStack py={2} flex={7} justifyContent="space-between" alignItems="flex-start">
                     <Text color="#eee" fontWeight="bold" fontSize={16}>{alert.cryptocurrency.nmCryptocurrency + " - " + alert.cryptocurrency.txSymbol}</Text>
                     <Text color="#eee" fontWeight="bold" fontSize={16}>
-                        Valor alvo: <Text color={alert.tpAlert === "TO_UP" ? "green.400" : "red.400"}>{alert.nrTargetValue.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'}).replace(".", "")}</Text> R$
+                        Valor alvo: <Text color={alert.tpAlert === "TO_UP" ? "green.400" : "red.400"}>{alert.nrTargetValue.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})}</Text> R$
                     </Text>
                 </VStack>
                 <VStack>
