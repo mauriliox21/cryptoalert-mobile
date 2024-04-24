@@ -21,7 +21,7 @@ export default function CardAlert({alert, onPress, onPressDelete}: CardAlertProp
     
     return (
         <Pressable onPress={() => onPress()} >
-            <HStack p={2} bg="#333" space={3} borderRadius={15} my={2} w="full">
+            <HStack p={2} bg="#333" space={3} borderRadius={15} my={2} w="full" opacity={alert.isActive ? 1 : 0.3}>
                 <Image flex={2} source={getIcon(alert.cryptocurrency.txPathIcon)} size={70} resizeMode="contain" alt="logo cripitomoeda"/>
                 <VStack py={2} flex={7} justifyContent="space-between" alignItems="flex-start">
                     <Text color="#eee" fontWeight="bold" fontSize={16}>{alert.cryptocurrency.nmCryptocurrency + " - " + alert.cryptocurrency.txSymbol}</Text>
@@ -32,7 +32,6 @@ export default function CardAlert({alert, onPress, onPressDelete}: CardAlertProp
                 <VStack>
                     <Image flex={1} source={alert.tpAlert === "TO_UP" ? imgToUp : imgToDown} size={30} resizeMode="contain" alt="icone tipo alerta"/>
                     <AntDesign flex={1} name="delete" size={24} color="#666" onPress={onPressDelete}/>
-
                 </VStack>
             </HStack>
         </Pressable>
