@@ -20,14 +20,14 @@ type IFormData = {
     cryptocurrency: string;
     alertType: string;
     targetValue: number;
-    isActive: boolean;
+    isActive?: boolean;
 } 
 
 const createAlertSchema = yup.object({
     cryptocurrency: yup.string().required("Informe a criptomoeda"),
     alertType: yup.string().required("Informe o tipo do alerta"),
     targetValue: yup.number().required("Informe o valor alvo").typeError("Informe o valor alvo").min(0.000001, "O valor minimo é 0,000001"),
-    isActive: yup.boolean().required()
+    isActive: yup.boolean()
 });
 
 const handleChangeTargetValue = (value: string, onChange: Function) => {
@@ -236,7 +236,7 @@ export default function CreateAlert ({ navigation, route }: BottomTabScreenProps
                             <Switch
                                 title="Ativo:"
                                 onValueChange={onChange} 
-                                value={value}
+                                value={value ?? false}
                             />
                         )}
                     />)

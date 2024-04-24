@@ -24,7 +24,7 @@ export default function Alerts({ navigation, route }: BottomTabScreenProps<RootS
     const getAllAlerts = () => {
         setIsLoading(true);
         setAlerts([]);
-        AxiosInstance.get("/alerts?sort=id")
+        AxiosInstance.get("/alerts?sort=id&size=20")
         .then((res: AxiosResponse<DefaultGetResponse<AlertResponse>, any>) => {
             setAlerts(res.data.content);
         })
