@@ -5,7 +5,7 @@ import messaging from '@react-native-firebase/messaging';
 import * as Device from 'expo-device';
 import Routes from './src/routes';
 import { NativeBaseProvider } from 'native-base';
-import { SQLiteProvider } from 'expo-sqlite/next';
+import { SQLiteProvider } from 'expo-sqlite';
 import { databaseInit } from './src/database/databaseInit';
 
 export default function App() {

@@ -1,4 +1,4 @@
-import { SQLiteDatabase } from "expo-sqlite/next";
+import { SQLiteDatabase } from "expo-sqlite";
 
 export async function databaseInit(database: SQLiteDatabase){
     await database.execAsync(`

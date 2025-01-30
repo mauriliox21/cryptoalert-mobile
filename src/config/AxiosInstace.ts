@@ -9,6 +9,7 @@ axios.interceptors.response.use(function (response) {
   });
 
 export const AxiosInstance = axios.create({
+    // baseURL: 'http://localhost:8080/api/v1'
     baseURL: 'http://192.168.1.196:8080/api/v1'
 });
 

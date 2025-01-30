@@ -1,4 +1,4 @@
-import { useSQLiteContext } from "expo-sqlite/next";
+import { useSQLiteContext } from "expo-sqlite";
 
 export type UserCreateDatabase = {
     id: number;

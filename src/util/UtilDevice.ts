@@ -20,8 +20,8 @@ export function UtilDevice () {
         let notificationToken = "";
 
         const status = await Notifications.requestPermissionsAsync();
-
-        if(Constants.appOwnership !== "expo" && status.granted) {
+        
+        if(Constants.executionEnvironment !== "storeClient" && status.granted) {
             notificationToken = await messaging().getToken();
         }
         

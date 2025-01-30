@@ -36,11 +36,20 @@
       [
         "expo-build-properties",
         {
+          "android": {
+            "usesCleartextTraffic": true
+          },
           "ios": {
             "useFrameworks": "static"
           }
         }
-      ]
-    ]
+      ],
+      "expo-sqlite"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d48e4e85-2ded-412a-83b8-e4c184cd5d14"
+      }
+    }
   }
 }
